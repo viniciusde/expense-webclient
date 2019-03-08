@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Gastos Web</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+	<form th:action="@{/app/salvar}" th:object="${expense}"
+		class="horizontal-form" method="POST">
+
+		<div class="row">
+			<fieldset style="margin-left: 20px;">
+				<legend>Novo Gasto</legend>
+			</fieldset>
+			<div class="col-md-6">
+
+				<div class="form-group">
+
+					<label class="control-label">Nome da Pessoa</label> <input
+						type="text" th:field="*{personName}" class="form-control" placeholder="Nome" />
+
+				</div>
+
+			</div>
+
+			<!--/span-->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">Descrição</label> <input type="text"
+						class="form-control" th:field="*{description}" placeholder="Descrição" />
+				</div>
+			</div>
+			<!--/span-->
+
+			<div class="col-md-6">
+
+				<div class="form-group">
+
+					<label class="control-label">Data e Hora</label> <input
+						type="datetime-local" th:field="*{dateTime}" class="form-control" placeholder="Data Hora" />
+
+				</div>
+
+			</div>
+
+			<!--/span-->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">Valor R$</label> <input type="text"
+						id="email" class="form-control" th:field="*{value}" placeholder="Valor" />
+				</div>
+			</div>
+
+			<!--/span-->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="control-label">Tags</label> <select name="tags" class="form-control" th:field="*{tags}">
+						<option value="Mensalidades">Mensalidades</option>
+						<option value="Saúde">Saúde</option>
+						<option value="Cartões">Cartões</option>
+						<option value="Outros">Outros</option>
+					</select>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div class="form-actions right">
+			<a th:href="@{/app}">
+				<button type="submit" class="btn blue" >Salvar</button>
+			</a>
+			<button type="button" class="btn default"> Cancelar </button>
+		</div>
+
+	</form>
+</html>

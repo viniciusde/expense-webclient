@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Gastos Web</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Gastos WEB</h1>
+			<p>Sistema de gerenciamento de gastos de uma pessoa</p>
+			<p>
+				<a class="btn btn-primary btn-lg" th:href="@{/app/novoGasto}" role="button">Novo
+					Gasto</a>
+			</p>
+		</div>
+	</div>
+
+
+	<table id="expenses" class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nome da Pessoa</th>
+				<th>Descrição</th>
+				<th>Valor R$</th>
+				<th>Data</th>
+				<th>Tags</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="result" data-th-each="expense : ${expenses}">
+				<td>[[${expense.id}]]</td>
+				<td>[[${expense.personName}]]</td>
+				<td>[[${expense.description}]]</td>
+				<td>[[${expense.value}]]</td>
+				<td>[[${expense.dateTime}]]</td>
+				<td>[[${expense.tags}]]</td>
+			</tr>
+		</tbody>
+	</table>
+</html>

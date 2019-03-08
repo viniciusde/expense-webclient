@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.denarde.finance.webclient.dto.ExpenseDTO;
@@ -44,11 +45,10 @@ public class ExpenseContoller {
     private Mono<ExpenseDTO> save(@RequestBody ExpenseDTO expense) {
     	Mono<ExpenseDTO> expenseMono = client.post()
                 .uri("/expenses")
-                .body(Mono.just(expense), ExpenseDTO.class)
+                .body(BodyInserters.fromObject( expense ) )
                 .retrieve()
                 .bodyToMono(ExpenseDTO.class);
     	
         return expenseMono;
     }
-
 }
