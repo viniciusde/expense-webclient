@@ -46,11 +46,11 @@ public class AppController {
     
     @PostMapping("/app/salvar")
 	public String salvar(@Valid ExpenseDTO expense) {
-    	 client.post()
-    		        .uri( "/expenses" )
-    		        .body( BodyInserters.fromObject( expense ) )
-    		        .exchange()
-    		        .flatMap( clientResponse -> clientResponse.bodyToMono( ExpenseDTO.class ) );
+    	client.post()
+                .uri("/expenses")
+                .body(BodyInserters.fromObject( expense ) )
+                .retrieve()
+                .bodyToMono(ExpenseDTO.class);
     	
 		return "redirect:/app";
 	}
